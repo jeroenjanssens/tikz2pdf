@@ -87,8 +87,3 @@ License
 -------
 
 BSD
-
-
-
-
-[XeLaTeX]()
