@@ -19,14 +19,15 @@ Let's say we have a file named `hello.tikz`, which contains the following:
 
 Run `tikz2pdf hello.tikz` from the command-line in order to compile this into a PDF file named `hello.pdf`.
 
-You can convert this PDF to PNG with [ImageMagick](http://www.imagemagick.org/script/index.php)
+You can convert this PDF to PNG with [ImageMagick](http://www.imagemagick.org/script/index.php):
 
 ```bash
 convert -flatten -density 96 -quality 1000 hello.pdf hello.png
 ```
 
-![Hello World!](examples/hello.png)
+to get the following image:
 
+![Hello World!](examples/hello.png)
 
 Templates
 ---------
