@@ -46,7 +46,7 @@ Templates are useful for when you have many figures that need the same styling (
 \end{document}
 ```
 
-The string `%tikz2pdf-tikz` is replaced with the actual TikZ code. If the TikZ file contains "documentclass" it is treated as as self-contained document and no template is used. So, the file `examples/swan-wave-model.tex`, which illustrates the [SWAN wave model](http://www.texample.net/tikz/examples/swan-wave-model/), can be directly converted to a PDF file:
+The string `%tikz2pdf-tikz` is replaced with the actual TikZ code. If the TikZ file contains "\documentclass" it is treated as a self-contained document and no template is used. So, the file `examples/swan-wave-model.tex`, which illustrates the [SWAN wave model](http://www.texample.net/tikz/examples/swan-wave-model/), can be directly converted to a PDF file:
 
 ```bash
 tikz2pdf swan-wave-model.tex
@@ -85,8 +85,16 @@ From `tikz2pdf --help`:
 Configuration
 -------------
 
+**tikz2pdf** can also be configured by setting the following arguments in certain files: `tikz2pdf-bin`, `tikz2pdf-include-directory`, `tikz2pdf-number`, `tikz2pdf-output`, `tikz2pdf-template`, `tikz2pdf-xelatex`, `tikz2pdf-pdflatex`, and `tikz2pdf-preview`. See the previous section for their meanings.
 
+These arguments can be set in a file called `.tikz2pdf` located in following directories (in order of reverse precedence): the home directory, the directory in which the TikZ file is, and the current working directory. Moreover, the TikZ file itself can also contain these arguments. So if `~/.tikz2pdf` contains:
 
+```latex
+tikz2pdf-xelatex
+tikz2pdf-number 2
+```
+
+Then all TikZ figures are by default compiled twice by XeLaTeX, unless these settings are overridden in `.tikz2pdf` files with higher precedence or in the command-line. 
 
 License
 -------
