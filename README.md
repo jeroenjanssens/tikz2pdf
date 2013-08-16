@@ -1,29 +1,37 @@
 tikz2pdf
 ========
 
-As illustrated by [this gallery](http://www.texample.net/tikz/examples/all/), [TikZ](http://sourceforge.net/projects/pgf/) is a package for TeX with which you 
-can create beautiful figures. Simply put, TikZ is for print what [D3](http://d3js.org/) is for web.
+TikZ is for print what [D3](http://d3js.org/) is for web. If you are unfamiliar with this nifty LaTeX package, then [this gallery of examples](http://www.texample.net/tikz/examples/all/) will convince you to use TikZ for your next publication.
 
-`tikz2pdf` is there to help you create those beatiful figures.
-It is written in Python and only requires a [working TeX system](http://en.wikibooks.org/wiki/LaTeX/Installation). 
+**tikz2pdf** is a command-line tool to aid you in creating beautiful figures.
+It's written in Python and (only) requires a [working TeX system](http://en.wikibooks.org/wiki/LaTeX/Installation). 
 
-Usage
------
+Basic Usage
+-----------
 
 Let's say we have a file named `hello.tikz`, which contains the following:
 
 ```latex
 \begin{tikzpicture}
-    \node[rectangle, draw=red, dotted, thick, rotate=15] {Hello World!};
+	\node[circle, draw=blue, dashed, thick, rotate=30, font=\Large] {Hello World!};
 \end{tikzpicture}
 ```
 
-Invoke `tikz2pdf hello.tikz` from the command-line in order to create a PDF file named `hello.pdf`.
+Run `tikz2pdf hello.tikz` from the command-line in order to compile this into a PDF file named `hello.pdf`.
+
+You can convert this PDF to PNG with [ImageMagick](http://www.imagemagick.org/script/index.php)
+
+```bash
+convert -flatten -density 96 -quality 1000 hello.pdf hello.png
+```
+
+![Hello World!](examples/hello.png)
+
 
 Templates
 ---------
 
-The following is the minimal template that is used when no template is specified:
+Templates are useful for when you have many figures that need the same styling (i.e., LaTeX preamble). The following is the minimal template that is used when no template is specified:
 
 ```latex
 \documentclass{article}
@@ -37,9 +45,9 @@ The following is the minimal template that is used when no template is specified
 \end{document}
 ```
 
-The string `%tikz2pdf-tikz` is replaced with the actual TikZ code.
+The string `%tikz2pdf-tikz` is replaced with the actual TikZ code. If the TikZ file contains "documentclass" it is treated as as self-contained document and no template is used. So, the file `examples/swan-wave-model.tex`, which illustrates the [SWAN wave model](http://www.texample.net/tikz/examples/swan-wave-model/), can be directly converted to a PDF file:
 
-
+![SWAN Model](examples/swan-wave-model.png)
 
 Command-line options
 --------------------
@@ -68,9 +76,10 @@ From `tikz2pdf --help`:
       -w, --watch           recompile when TikZ file or template has changed
       -x, --xelatex         use xelatex as compiler
 
-
 Configuration
 -------------
+
+
 
 
 License
