@@ -87,14 +87,14 @@ Configuration
 
 **tikz2pdf** can also be configured by setting the following arguments in certain files: `tikz2pdf-bin`, `tikz2pdf-include-directory`, `tikz2pdf-number`, `tikz2pdf-output`, `tikz2pdf-template`, `tikz2pdf-xelatex`, `tikz2pdf-pdflatex`, and `tikz2pdf-preview`. See the previous section for their meanings.
 
-These arguments can be set in a file called `.tikz2pdf` located in following directories (in order of reverse precedence): the home directory, the directory in which the TikZ file is, and the current working directory. Moreover, the TikZ file itself can also contain these arguments. So if `~/.tikz2pdf` contains:
+These arguments can be set in a file called `.tikz2pdf`, which may be located in following directories (from low to high precedence): the home directory, the directory in which the TikZ file is, and the current working directory. Moreover, the TikZ file itself can also contain these arguments. The command-line has the highest precedence. So if, for example, `~/.tikz2pdf` contains:
 
 ```latex
 tikz2pdf-xelatex
 tikz2pdf-number 2
 ```
 
-Then all TikZ figures are by default compiled twice by XeLaTeX, unless these settings are overridden in `.tikz2pdf` files with higher precedence or in the command-line. 
+Then all TikZ figures are by default compiled twice by XeLaTeX, unless these settings are overridden in `.tikz2pdf` files with higher precedence or in the command-line.
 
 License
 -------
