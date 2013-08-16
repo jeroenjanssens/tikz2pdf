@@ -48,6 +48,11 @@ Templates are useful for when you have many figures that need the same styling (
 
 The string `%tikz2pdf-tikz` is replaced with the actual TikZ code. If the TikZ file contains "documentclass" it is treated as as self-contained document and no template is used. So, the file `examples/swan-wave-model.tex`, which illustrates the [SWAN wave model](http://www.texample.net/tikz/examples/swan-wave-model/), can be directly converted to a PDF file:
 
+```bash
+tikz2pdf swan-wave-model.tex
+convert -flatten -density 96 -quality 1000 swan-wave-model.pdf swan-wave-model.png
+```
+
 ![SWAN Model](examples/swan-wave-model.png)
 
 Command-line options
